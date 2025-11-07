@@ -11,9 +11,9 @@ gerrit_plugin(
     srcs = glob(["src/main/java/**/*.java"]),
     manifest_entries = [
         "Gerrit-PluginName: websession-broker",
-        "Gerrit-HttpModule: com.googlesource.gerrit.plugins.websession.broker.BrokerBasedWebSession$Module",
+        "Gerrit-HttpModule: com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSession$Module",
         "Implementation-Title: Broker WebSession",
-        "Implementation-URL: https://review.gerrithub.io/admin/repos/GerritForge/plugins_websession-broker",
+        "Implementation-URL: https://github.com/GerritForge/websession-broker",
     ],
     resources = glob(["src/main/resources/**/*"]),
     deps = [
