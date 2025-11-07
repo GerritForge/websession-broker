@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f32951_fd501647",
+        "filename": "src/test/java/com/google/gerrit/httpd/FakeWebSessionVal.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2025-11-07T16:55:42Z",
+      "side": 1,
+      "message": "This file is missing the licence header, should I add our own?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 32
+      },
+      "revId": "92ef29d80212022a45bb99c1593ab27393daeaf9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
