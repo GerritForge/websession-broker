@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.websession.broker.util;
+package com.gerritforge.gerrit.plugins.websession.broker.util;
 
 import com.google.inject.Singleton;
 import java.time.Clock;

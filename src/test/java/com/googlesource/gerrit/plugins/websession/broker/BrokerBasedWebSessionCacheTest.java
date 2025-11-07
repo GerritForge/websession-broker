@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.websession.broker;
+package com.gerritforge.gerrit.plugins.websession.broker;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -35,10 +35,10 @@ import com.google.gerrit.server.account.externalids.ExternalId;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
-import com.googlesource.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
-import com.googlesource.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent.Operation;
-import com.googlesource.gerrit.plugins.websession.broker.log.WebSessionLogger;
-import com.googlesource.gerrit.plugins.websession.broker.util.TimeMachine;
+import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
+import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent.Operation;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
+import com.gerritforge.gerrit.plugins.websession.broker.util.TimeMachine;
 import java.time.Instant;
 import java.util.concurrent.ExecutorService;
 import org.eclipse.jgit.lib.Config;
