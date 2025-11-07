@@ -22,6 +22,30 @@
       },
       "revId": "92ef29d80212022a45bb99c1593ab27393daeaf9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588cf910_05713640",
+        "filename": "src/test/java/com/google/gerrit/httpd/FakeWebSessionVal.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2025-11-07T19:45:05Z",
+      "side": 1,
+      "message": "I would say yes cc: @luca.milanesio@gmail.com",
+      "parentUuid": "94f32951_fd501647",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 32
+      },
+      "revId": "92ef29d80212022a45bb99c1593ab27393daeaf9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
