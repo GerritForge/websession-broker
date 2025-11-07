@@ -12,22 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.websession.broker.util;
+package com.gerritforge.gerrit.plugins.websession.broker;
 
-import com.google.inject.Singleton;
-import java.time.Clock;
-import java.time.Instant;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Singleton
-public class TimeMachine {
+import com.google.inject.BindingAnnotation;
+import java.lang.annotation.Retention;
 
-  private Clock clock = Clock.systemDefaultZone();
-
-  public Instant now() {
-    return Instant.now(getClock());
-  }
-
-  public Clock getClock() {
-    return clock;
-  }
-}
+@Retention(RUNTIME)
+@BindingAnnotation
+public @interface WebSessionProducerExecutor {}
