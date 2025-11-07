@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a55d9f47_c0aa4c8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2025-11-07T19:49:27Z",
+      "side": 1,
+      "message": "@danielesassoli@gmail.com I\u0027m probably doing sth wrong but it fails to compile for me with the following:\n```\nplugins/websession-broker/src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java:239: error: incompatible types: invalid method reference\n    brokerApi.get().receiveAsync(webSessionTopicName, this::processMessage);\n                                                      ^\n    incompatible types: EventMessage cannot be converted to Event\nplugins/websession-broker/src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java:270: error: incompatible types: WebSessionEvent cannot be converted to EventMessage\n            brokerApi.get().send(webSessionTopicName, webSessionEvent);\n                                                      ^\nTarget //plugins/websession-broker:websession-broker failed to build\n```\nso please give `V+1` if it compiles for you 😉",
+      "revId": "884e3263b16ebb8ac90e26ea75d51172659cd38d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
