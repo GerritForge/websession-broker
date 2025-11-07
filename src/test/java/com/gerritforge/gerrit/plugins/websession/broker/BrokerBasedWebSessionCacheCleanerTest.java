@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.websession.broker;
+package com.gerritforge.gerrit.plugins.websession.broker;
 
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
@@ -26,7 +26,7 @@ import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.git.WorkQueue;
 import com.google.inject.Provider;
-import com.googlesource.gerrit.plugins.websession.broker.BrokerBasedWebSessionCacheCleaner.CleanupTask;
+import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCacheCleaner.CleanupTask;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;

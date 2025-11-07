@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.websession.broker;
+package com.gerritforge.gerrit.plugins.websession.broker;
 
 import com.google.gerrit.extensions.annotations.RootRelative;
 import com.google.gerrit.extensions.events.LifecycleListener;
@@ -33,8 +33,8 @@ import com.google.inject.Scopes;
 import com.google.inject.internal.UniqueAnnotations;
 import com.google.inject.servlet.RequestScoped;
 import com.google.inject.servlet.ServletScopes;
-import com.googlesource.gerrit.plugins.websession.broker.log.Log4jWebSessionLogger;
-import com.googlesource.gerrit.plugins.websession.broker.log.WebSessionLogger;
+import com.gerritforge.gerrit.plugins.websession.broker.log.Log4jWebSessionLogger;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
 import java.lang.annotation.Annotation;
 import java.util.concurrent.ExecutorService;
 import javax.servlet.http.HttpServletRequest;

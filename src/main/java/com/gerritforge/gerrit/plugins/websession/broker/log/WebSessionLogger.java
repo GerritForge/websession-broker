@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.websession.broker.log;
+package com.gerritforge.gerrit.plugins.websession.broker.log;
 
 import com.google.gerrit.httpd.WebSessionManager.Val;
-import com.googlesource.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
+import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
 import java.util.Optional;
 
 public interface WebSessionLogger {
