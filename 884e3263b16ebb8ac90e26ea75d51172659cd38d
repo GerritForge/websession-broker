@@ -99,6 +99,30 @@
       },
       "revId": "884e3263b16ebb8ac90e26ea75d51172659cd38d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1604e0c_1ea03b84",
+        "filename": "BUILD",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2025-11-08T08:06:21Z",
+      "side": 1,
+      "message": "It was agreed to switch to GH.",
+      "parentUuid": "20af6aaa_f4ec8952",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 106
+      },
+      "revId": "884e3263b16ebb8ac90e26ea75d51172659cd38d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
