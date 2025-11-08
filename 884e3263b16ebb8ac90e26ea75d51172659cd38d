@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "67a0863e_ae85ccac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2025-11-08T08:04:14Z",
+      "side": 1,
+      "message": "Mystery solved: I have used wrong version of the `events-broker` repo 😀 - compiles and tests correct",
+      "parentUuid": "57bc1417_d390db30",
+      "revId": "884e3263b16ebb8ac90e26ea75d51172659cd38d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ccc46e0_0d74c63e",
         "filename": "BUILD",
         "patchSetId": 8
@@ -49,6 +67,30 @@
       "writtenOn": "2025-11-07T20:00:22Z",
       "side": 1,
       "message": "```suggestion\n        \"Implementation-URL: https://github.com/GerritForge/plugins_websession-broker,\n```",
+      "range": {
+        "startLine": 16,
+        "startChar": 29,
+        "endLine": 16,
+        "endChar": 106
+      },
+      "revId": "884e3263b16ebb8ac90e26ea75d51172659cd38d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20af6aaa_f4ec8952",
+        "filename": "BUILD",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1019121
+      },
+      "writtenOn": "2025-11-08T08:04:14Z",
+      "side": 1,
+      "message": "question: why changing to github? also the original url seems weird as I have cloned it from https://review.gerrithub.io/GerritForge/websession-broker",
+      "parentUuid": "6ccc46e0_0d74c63e",
       "range": {
         "startLine": 16,
         "startChar": 29,
