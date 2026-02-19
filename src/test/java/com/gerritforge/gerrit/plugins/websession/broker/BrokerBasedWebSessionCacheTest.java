@@ -21,6 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.gerritforge.gerrit.eventbroker.BrokerApi;
+import com.gerritforge.gerrit.eventbroker.MessageAcknowledgement;
 import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
 import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent.Operation;
 import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
@@ -55,6 +56,7 @@ public class BrokerBasedWebSessionCacheTest {
   private static Val VAL =
       FakeWebSessionVal.getVal(Account.id(1), ExternalId.Key.parse("foo:bar", true));
   private static final String PLUGIN_NAME = "websession-broker";
+  private static final MessageAcknowledgement<Event> NOOP_ACK = (ignore) -> {};
 
   private byte[] emptyPayload = new byte[] {-84, -19, 0, 5, 112};
   byte[] defaultPayload =
@@ -128,7 +130,7 @@ public class BrokerBasedWebSessionCacheTest {
   public void shouldUpdateCacheWhenLoginMessageReceived() {
     WebSessionEvent eventMessage = createEventMessage();
 
-    objectUnderTest.processMessage(eventMessage);
+    objectUnderTest.processMessage(eventMessage, NOOP_ACK, /* autoAck */ true);
 
     Val val = cache.getIfPresent(eventMessageKey(eventMessage));
     assertThat(val).isNotNull();
@@ -140,7 +142,7 @@ public class BrokerBasedWebSessionCacheTest {
     WebSessionEvent eventMessage = createEventMessage(emptyPayload, Operation.REMOVE);
     cache.put(KEY, VAL);
 
-    objectUnderTest.processMessage(eventMessage);
+    objectUnderTest.processMessage(eventMessage, NOOP_ACK, /* autoAck */ true);
 
     assertThat(cache.getIfPresent(KEY)).isNull();
   }
@@ -151,7 +153,7 @@ public class BrokerBasedWebSessionCacheTest {
 
     WebSessionEvent eventMessage = createEventMessage();
 
-    objectUnderTest.processMessage(eventMessage);
+    objectUnderTest.processMessage(eventMessage, NOOP_ACK, /* autoAck */ true);
 
     Val val = cache.getIfPresent(eventMessageKey(eventMessage));
     assertThat(val).isNotNull();
@@ -211,7 +213,7 @@ public class BrokerBasedWebSessionCacheTest {
   private Val createVal(Event message) {
     WebSessionEvent event = (WebSessionEvent) message;
 
-    objectUnderTest.processMessage(message);
+    objectUnderTest.processMessage(message, NOOP_ACK, /* autoAck */ true);
     return cache.getIfPresent(event.key);
   }
 
