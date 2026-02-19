@@ -21,6 +21,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.gerritforge.gerrit.eventbroker.BrokerApi;
+import com.gerritforge.gerrit.eventbroker.MessageAcknowledgement;
+import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
+import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent.Operation;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
+import com.gerritforge.gerrit.plugins.websession.broker.util.TimeMachine;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.util.concurrent.MoreExecutors;
@@ -32,10 +37,6 @@ import com.google.gerrit.server.account.externalids.ExternalId;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.events.Event;
-import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
-import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent.Operation;
-import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
-import com.gerritforge.gerrit.plugins.websession.broker.util.TimeMachine;
 import java.time.Instant;
 import java.util.concurrent.ExecutorService;
 import org.eclipse.jgit.lib.Config;
@@ -128,7 +129,7 @@ public class BrokerBasedWebSessionCacheTest {
   public void shouldUpdateCacheWhenLoginMessageReceived() {
     WebSessionEvent eventMessage = createEventMessage();
 
-    objectUnderTest.processMessage(eventMessage);
+    objectUnderTest.processMessage(eventMessage, NoopAck.INSTANCE);
 
     Val val = cache.getIfPresent(eventMessageKey(eventMessage));
     assertThat(val).isNotNull();
@@ -140,7 +141,7 @@ public class BrokerBasedWebSessionCacheTest {
     WebSessionEvent eventMessage = createEventMessage(emptyPayload, Operation.REMOVE);
     cache.put(KEY, VAL);
 
-    objectUnderTest.processMessage(eventMessage);
+    objectUnderTest.processMessage(eventMessage, NoopAck.INSTANCE);
 
     assertThat(cache.getIfPresent(KEY)).isNull();
   }
@@ -151,7 +152,7 @@ public class BrokerBasedWebSessionCacheTest {
 
     WebSessionEvent eventMessage = createEventMessage();
 
-    objectUnderTest.processMessage(eventMessage);
+    objectUnderTest.processMessage(eventMessage, NoopAck.INSTANCE);
 
     Val val = cache.getIfPresent(eventMessageKey(eventMessage));
     assertThat(val).isNotNull();
@@ -211,7 +212,7 @@ public class BrokerBasedWebSessionCacheTest {
   private Val createVal(Event message) {
     WebSessionEvent event = (WebSessionEvent) message;
 
-    objectUnderTest.processMessage(message);
+    objectUnderTest.processMessage(message, NoopAck.INSTANCE);
     return cache.getIfPresent(event.key);
   }
 
@@ -228,5 +229,18 @@ public class BrokerBasedWebSessionCacheTest {
     WebSessionEvent event = new WebSessionEvent(KEY, payload, operation);
     event.instanceId = instanceId;
     return event;
+  }
+
+  protected static class NoopAck implements MessageAcknowledgement {
+
+    public static final NoopAck INSTANCE = new NoopAck();
+
+    @Override
+    public void ack() {}
+
+    @Override
+    public boolean isAutoAck() {
+      return false;
+    }
   }
 }

@@ -12,6 +12,10 @@
 package com.gerritforge.gerrit.plugins.websession.broker;
 
 import com.gerritforge.gerrit.eventbroker.BrokerApi;
+import com.gerritforge.gerrit.eventbroker.MessageAcknowledgement;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger.Direction;
+import com.gerritforge.gerrit.plugins.websession.broker.util.TimeMachine;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheStats;
 import com.google.common.collect.ImmutableMap;
@@ -33,9 +37,6 @@ import com.google.gerrit.server.events.Event;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
-import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
-import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger.Direction;
-import com.gerritforge.gerrit.plugins.websession.broker.util.TimeMachine;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -92,7 +93,7 @@ public class BrokerBasedWebSessionCache
     return gerritConfig.getInt("cache", "web_sessions", "diskLimit", 1024) == 0;
   }
 
-  protected void processMessage(Event message) {
+  protected void processMessage(Event message, MessageAcknowledgement messageAckwnloedgement) {
     if (!WebSessionEvent.TYPE.equals(message.getType())) {
       logger.atWarning().log("Skipping web session message of unknown type: %s", message.getType());
       return;
@@ -106,20 +107,24 @@ public class BrokerBasedWebSessionCache
             ObjectInputStream inputStream = new ObjectInputStream(in)) {
           Val value = (Val) inputStream.readObject();
 
-          webSessionLogger.log(Direction.CONSUME, webSessionTopicName, event, Optional.of(value));
           Instant expires = Instant.ofEpochMilli(value.getExpiresAt());
           if (expires.isAfter(timeMachine.now())) {
             cache.put(event.key, value);
           }
-
+          if (!messageAckwnloedgement.isAutoAck()) {
+            messageAckwnloedgement.ack();
+          }
+          webSessionLogger.log(Direction.CONSUME, webSessionTopicName, event, Optional.of(value));
         } catch (IOException | ClassNotFoundException e) {
           logger.atSevere().withCause(e).log("Malformed event '%s'", message);
         }
         break;
       case REMOVE:
         cache.invalidate(event.key);
+        if (!messageAckwnloedgement.isAutoAck()) {
+          messageAckwnloedgement.ack();
+        }
         webSessionLogger.log(Direction.CONSUME, webSessionTopicName, event, Optional.empty());
-
         break;
       default:
         logger.atWarning().log(
