@@ -11,12 +11,12 @@
 
 package com.gerritforge.gerrit.plugins.websession.broker.log;
 
+import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
 import com.google.gerrit.extensions.systemstatus.ServerInformation;
 import com.google.gerrit.httpd.WebSessionManager.Val;
 import com.google.gerrit.server.util.PluginLogFile;
 import com.google.gerrit.server.util.SystemLog;
 import com.google.inject.Inject;
-import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
 import java.util.Optional;
 import org.apache.log4j.PatternLayout;
 import org.slf4j.Logger;
