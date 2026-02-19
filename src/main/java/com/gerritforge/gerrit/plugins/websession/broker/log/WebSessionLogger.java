@@ -11,8 +11,8 @@
 
 package com.gerritforge.gerrit.plugins.websession.broker.log;
 
-import com.google.gerrit.httpd.WebSessionManager.Val;
 import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCache.WebSessionEvent;
+import com.google.gerrit.httpd.WebSessionManager.Val;
 import java.util.Optional;
 
 public interface WebSessionLogger {
