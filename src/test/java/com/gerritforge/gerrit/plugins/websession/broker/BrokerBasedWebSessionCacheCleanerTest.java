@@ -19,11 +19,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCacheCleaner.CleanupTask;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.git.WorkQueue;
 import com.google.inject.Provider;
-import com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSessionCacheCleaner.CleanupTask;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;

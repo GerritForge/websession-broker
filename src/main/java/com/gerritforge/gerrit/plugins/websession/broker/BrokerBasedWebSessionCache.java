@@ -12,6 +12,9 @@
 package com.gerritforge.gerrit.plugins.websession.broker;
 
 import com.gerritforge.gerrit.eventbroker.BrokerApi;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger.Direction;
+import com.gerritforge.gerrit.plugins.websession.broker.util.TimeMachine;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheStats;
 import com.google.common.collect.ImmutableMap;
@@ -33,9 +36,6 @@ import com.google.gerrit.server.events.Event;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
-import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
-import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger.Direction;
-import com.gerritforge.gerrit.plugins.websession.broker.util.TimeMachine;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
