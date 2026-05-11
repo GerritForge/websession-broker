@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1af080_e3712f26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-05-11T10:27:56Z",
+      "side": 1,
+      "message": "Verified manually:\n```\nINFO: Found 8 targets...\nINFO: Elapsed time: 1.180s, Critical Path: 0.93s\nINFO: 94 processes: 159 action cache hit, 90 disk cache hit, 1 internal, 2 darwin-sandbox, 1 worker.\nINFO: Build completed successfully, 94 total actions\n```",
+      "revId": "2a1f915a53b7d769a9d0843adc961a8e47e7a2fe",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
