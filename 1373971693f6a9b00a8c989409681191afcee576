@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f599a1_690dd0cd",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-05-11T09:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f19cd93_056452f4",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 93
+      },
+      "revId": "1373971693f6a9b00a8c989409681191afcee576",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b02a4f5_66b78d4b",
@@ -47,6 +71,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6788eaee_b6c89cd3",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-05-11T09:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b02a4f5_66b78d4b",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 94
+      },
+      "revId": "1373971693f6a9b00a8c989409681191afcee576",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb717653_13891419",
@@ -60,6 +108,24 @@
       "writtenOn": "2026-05-11T07:34:56Z",
       "side": 1,
       "message": "The tests will remain unchanged if you just introduce a wrapper message processor as suggested (`processMessageWithAck()`).",
+      "revId": "1373971693f6a9b00a8c989409681191afcee576",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d53560_7dff994b",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCacheTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-05-11T09:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb717653_13891419",
       "revId": "1373971693f6a9b00a8c989409681191afcee576",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
