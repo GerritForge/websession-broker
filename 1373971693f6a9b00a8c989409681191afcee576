@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f19cd93_056452f4",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-05-11T07:34:56Z",
+      "side": 1,
+      "message": "There are multiple paths where the ack isn\u0027t done in this method. Is that intentional?\n\nWhy not simply create an internal method `processMessageWithAck` as a wrapper and ack on finally?\n\nThere isn\u0027t really interest in managing the manual ack from this plugin, so it\u0027s more satisfying the new interface rather than applying any specific logic.\n\n\n\n```suggestion\n  protected  void processMessageWithAck(Event event, MessageAcknowledgement\u003cEvent\u003e acknowledgement) {\n    if (!brokerApi.get().isAutoAck()) {\n      acknowledgement.ack(event);\n    }\n\n    processMessage(event);\n  }\n  \n  protected void processMessage(\n      Event message, MessageAcknowledgement\u003cEvent\u003e messageAcknowledgement, boolean autoAck) {\n```",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 93
+      },
+      "revId": "1373971693f6a9b00a8c989409681191afcee576",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b02a4f5_66b78d4b",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-05-11T07:34:56Z",
+      "side": 1,
+      "message": "Complexity not needed if you just call `processMessageWithAck` proposed above.\n\n\n\n```suggestion\n    brokerApi.get().receiveAsync(webSessionTopicName, this::processMessageWithAck);\n```",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 94
+      },
+      "revId": "1373971693f6a9b00a8c989409681191afcee576",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb717653_13891419",
+        "filename": "src/test/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCacheTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-05-11T07:34:56Z",
+      "side": 1,
+      "message": "The tests will remain unchanged if you just introduce a wrapper message processor as suggested (`processMessageWithAck()`).",
+      "revId": "1373971693f6a9b00a8c989409681191afcee576",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
