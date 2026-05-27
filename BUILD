@@ -37,7 +37,6 @@ java_library(
     visibility = ["//visibility:public"],
     exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":websession-broker__plugin",
-        "@mockito//jar",
         "//plugins/events-broker",
     ],
 )
