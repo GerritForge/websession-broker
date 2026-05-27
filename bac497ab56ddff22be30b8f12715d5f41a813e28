@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "091225ea_4e770081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000177
+      },
+      "writtenOn": "2026-05-27T21:59:33Z",
+      "side": 1,
+      "message": "Verified that the build succeeds and tests pass.",
+      "revId": "bac497ab56ddff22be30b8f12715d5f41a813e28",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
