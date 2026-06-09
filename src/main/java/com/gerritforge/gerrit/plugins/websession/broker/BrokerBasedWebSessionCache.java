@@ -236,7 +236,7 @@ public class BrokerBasedWebSessionCache
     if (brokerApi == null || brokerApi.get() == null) {
       throw new IllegalStateException("Cannot find binding for BrokerApi");
     }
-    brokerApi.get().receiveAsync(webSessionTopicName, this::processMessage);
+    brokerApi.get().receiveAsync(webSessionTopicName, (event, ack) -> processMessage(event));
     if (shouldReplayAllSessions) {
       brokerApi.get().replayAllEvents(webSessionTopicName);
     }
