@@ -1,10 +1,9 @@
-load("//tools/bzl:junit.bzl", "junit_tests")
 load(
-    "//tools/bzl:plugin.bzl",
-    "PLUGIN_DEPS",
-    "PLUGIN_TEST_DEPS",
+    "@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl",
     "gerrit_plugin",
+    "gerrit_plugin_tests",
 )
+load("@rules_java//java:defs.bzl", "java_library")
 
 gerrit_plugin(
     name = "websession-broker",
@@ -21,25 +20,12 @@ gerrit_plugin(
     ],
 )
 
-junit_tests(
+gerrit_plugin_tests(
     name = "websession-broker_tests",
     srcs = glob(["src/test/java/**/*.java"]),
-    resources = glob(["src/test/resources/**/*"]),
+    plugin = "websession-broker",
     tags = ["websession-broker"],
-    deps = [
-        ":websession-broker__plugin_test_deps",
-    ],
-)
-
-java_library(
-    name = "websession-broker__plugin_test_deps",
-    testonly = 1,
-    visibility = ["//visibility:public"],
-    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":websession-broker__plugin",
-        "@mockito//jar",
-        "//plugins/events-broker",
-    ],
+    deps = ["//plugins/events-broker"],
 )
 
 java_library(
