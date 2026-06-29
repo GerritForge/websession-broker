@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "515587c7_1c7f3584",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-06-29T14:20:04Z",
+      "side": 1,
+      "message": "Not needed: stable-3.14 doesn\u0027t require bzlmod",
+      "revId": "241ae3eb7f41e74f84f558c38b7b421d4d601ef2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
