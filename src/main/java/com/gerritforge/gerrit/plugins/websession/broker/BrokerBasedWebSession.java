@@ -11,6 +11,12 @@
 
 package com.gerritforge.gerrit.plugins.websession.broker;
 
+<<<<<<< HEAD   (6e25b2ad08d20e296b32c250b1487df8308dee07 Update links from README.md to LICENSE)
+=======
+import com.gerritforge.gerrit.plugins.bsl.HttpModule;
+import com.gerritforge.gerrit.plugins.websession.broker.log.Log4jWebSessionLogger;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
+>>>>>>> CHANGE (af77691325d3b02a30ccfff58fed5faa2d2f2861 Redirect admin users to GerritForge's BSL awareness page)
 import com.google.gerrit.extensions.annotations.RootRelative;
 import com.google.gerrit.extensions.events.LifecycleListener;
 import com.google.gerrit.extensions.registration.DynamicItem;
@@ -50,6 +56,7 @@ public class BrokerBasedWebSession extends CacheBasedWebSession {
 
     @Override
     protected void configure() {
+      install(new HttpModule());
       EventTypes.register(
           BrokerBasedWebSessionCache.WebSessionEvent.TYPE,
           BrokerBasedWebSessionCache.WebSessionEvent.class);
