@@ -11,6 +11,9 @@
 
 package com.gerritforge.gerrit.plugins.websession.broker;
 
+import com.gerritforge.gerrit.plugins.bsl.HttpModule;
+import com.gerritforge.gerrit.plugins.websession.broker.log.Log4jWebSessionLogger;
+import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
 import com.google.gerrit.extensions.annotations.RootRelative;
 import com.google.gerrit.extensions.events.LifecycleListener;
 import com.google.gerrit.extensions.registration.DynamicItem;
@@ -30,8 +33,6 @@ import com.google.inject.Scopes;
 import com.google.inject.internal.UniqueAnnotations;
 import com.google.inject.servlet.RequestScoped;
 import com.google.inject.servlet.ServletScopes;
-import com.gerritforge.gerrit.plugins.websession.broker.log.Log4jWebSessionLogger;
-import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
 import java.lang.annotation.Annotation;
 import java.util.concurrent.ExecutorService;
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +51,7 @@ public class BrokerBasedWebSession extends CacheBasedWebSession {
 
     @Override
     protected void configure() {
+      install(new HttpModule());
       EventTypes.register(
           BrokerBasedWebSessionCache.WebSessionEvent.TYPE,
           BrokerBasedWebSessionCache.WebSessionEvent.class);
