@@ -11,6 +11,7 @@
 
 package com.gerritforge.gerrit.plugins.websession.broker;
 
+import com.gerritforge.gerrit.plugins.bsl.HttpModule;
 import com.google.gerrit.extensions.annotations.RootRelative;
 import com.google.gerrit.extensions.events.LifecycleListener;
 import com.google.gerrit.extensions.registration.DynamicItem;
@@ -50,6 +51,7 @@ public class BrokerBasedWebSession extends CacheBasedWebSession {
 
     @Override
     protected void configure() {
+      install(new HttpModule());
       EventTypes.register(
           BrokerBasedWebSessionCache.WebSessionEvent.TYPE,
           BrokerBasedWebSessionCache.WebSessionEvent.class);
