@@ -18,6 +18,7 @@ gerrit_plugin(
     resources = glob(["src/main/resources/**/*"]),
     deps = [
         ":events-broker-neverlink",
+        "//plugins/gerrit-bsl-license",
     ],
 )
 
