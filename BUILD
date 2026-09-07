@@ -10,6 +10,7 @@ gerrit_plugin(
     srcs = glob(["src/main/java/**/*.java"]),
     manifest_entries = [
         "Gerrit-PluginName: websession-broker",
+        "Gerrit-Module: com.gerritforge.gerrit.plugins.websession.broker.WebSessionBrokerApiLoadedListener$Module",
         "Gerrit-HttpModule: com.gerritforge.gerrit.plugins.websession.broker.BrokerBasedWebSession$Module",
         "Implementation-Title: Broker WebSession",
         "Implementation-URL: https://github.com/GerritForge/websession-broker",

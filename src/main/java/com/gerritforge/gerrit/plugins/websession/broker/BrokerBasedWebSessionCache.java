@@ -67,6 +67,7 @@ public class BrokerBasedWebSessionCache
   private final WebSessionLogger webSessionLogger;
   private String instanceId;
   private final boolean shouldReplayAllSessions;
+  private final WebSessionBrokerApiLoadedListener brokerApiListener;
 
   @Inject
   public BrokerBasedWebSessionCache(
@@ -78,9 +79,11 @@ public class BrokerBasedWebSessionCache
       WebSessionLogger webSessionLogger,
       @WebSessionProducerExecutor ExecutorService executor,
       @Nullable @GerritInstanceId String gerritInstanceId,
-      @GerritServerConfig Config gerritConfig) {
+      @GerritServerConfig Config gerritConfig,
+      WebSessionBrokerApiLoadedListener brokerApiListener) {
     this.cache = cache;
     this.brokerApi = brokerApi;
+    this.brokerApiListener = brokerApiListener;
     this.timeMachine = timeMachine;
     this.webSessionTopicName = getWebSessionTopicName(cfg, pluginName);
     this.shouldReplayAllSessions = shouldReplayAllSessions(gerritConfig);
@@ -243,9 +246,20 @@ public class BrokerBasedWebSessionCache
 
   @Override
   public void start() {
-    if (brokerApi == null || brokerApi.get() == null) {
-      throw new IllegalStateException("Cannot find binding for BrokerApi");
+    brokerApiListener.register(this);
+    if (brokerApiListener.isBrokerApiStarted()) {
+      logger.atInfo().log("Broker plugin already started, subscribing");
+      subscribe();
+    } else {
+      logger.atInfo().log(
+          "No broker plugin started, waiting before subscribing");
     }
+  }
+
+  synchronized void subscribe() {
+    logger.atInfo().log(
+        "Subscribing to topic %s on broker plugin %s",
+        webSessionTopicName, brokerApi.getPluginName());
     brokerApi.get().receiveAsync(webSessionTopicName, this::processMessageWithAck);
     if (shouldReplayAllSessions) {
       brokerApi.get().replayAllEvents(webSessionTopicName);
