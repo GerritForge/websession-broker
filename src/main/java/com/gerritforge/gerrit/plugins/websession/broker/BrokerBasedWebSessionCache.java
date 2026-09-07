@@ -12,6 +12,7 @@
 package com.gerritforge.gerrit.plugins.websession.broker;
 
 import com.gerritforge.gerrit.eventbroker.BrokerApi;
+import com.gerritforge.gerrit.eventbroker.BrokerApiPluginListener;
 import com.gerritforge.gerrit.eventbroker.MessageAcknowledgement;
 import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger;
 import com.gerritforge.gerrit.plugins.websession.broker.log.WebSessionLogger.Direction;
@@ -54,7 +55,7 @@ import org.eclipse.jgit.lib.Config;
 
 @Singleton
 public class BrokerBasedWebSessionCache
-    implements Cache<String, WebSessionManager.Val>, LifecycleListener {
+    implements Cache<String, WebSessionManager.Val>, LifecycleListener, BrokerApiPluginListener {
 
   private static final FluentLogger logger = FluentLogger.forEnclosingClass();
   private static String DEFAULT_WEB_SESSION_TOPIC = "gerrit_web_session";
@@ -242,10 +243,26 @@ public class BrokerBasedWebSessionCache
   }
 
   @Override
+  public DynamicItem<BrokerApi> brokerApiDynamicItem() {
+    return brokerApi;
+  }
+
+  @Override
   public void start() {
-    if (brokerApi == null || brokerApi.get() == null) {
-      throw new IllegalStateException("Cannot find binding for BrokerApi");
+    if (isBrokerApiStarted()) {
+      logger.atInfo().log("[websession-broker-trace] broker plugin already started, subscribing");
+      onBrokerApiStarted();
+    } else {
+      logger.atInfo().log(
+          "[websession-broker-trace] no broker plugin started, waiting before subscribing");
     }
+  }
+
+  @Override
+  public synchronized void onBrokerApiStarted() {
+    logger.atInfo().log(
+        "[websession-broker-trace] subscribing to topic %s on broker plugin %s",
+        webSessionTopicName, brokerApi.getPluginName());
     brokerApi.get().receiveAsync(webSessionTopicName, this::processMessageWithAck);
     if (shouldReplayAllSessions) {
       brokerApi.get().replayAllEvents(webSessionTopicName);
