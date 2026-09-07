@@ -27,6 +27,7 @@ import com.google.gerrit.server.cache.CacheModule;
 import com.google.gerrit.server.config.AuthConfig;
 import com.google.gerrit.server.events.EventTypes;
 import com.google.gerrit.server.git.WorkQueue;
+import com.google.gerrit.server.plugins.StartPluginListener;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Scopes;
@@ -67,6 +68,9 @@ public class BrokerBasedWebSession extends CacheBasedWebSession {
                   configuration.getNumberOfThreads(), "websession-events-producer"));
 
       listener(BrokerBasedWebSessionCache.class);
+      bind(StartPluginListener.class)
+          .annotatedWith(UniqueAnnotations.create())
+          .to(BrokerBasedWebSessionCache.class);
       listener(BrokerBasedWebSessionCacheCleaner.class);
       listener(Log4jWebSessionLogger.class);
 
