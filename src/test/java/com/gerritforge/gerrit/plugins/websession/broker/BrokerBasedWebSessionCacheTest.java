@@ -205,7 +205,8 @@ public class BrokerBasedWebSessionCacheTest {
         webSessionLogger,
         executorServce,
         instanceId,
-        gerritConfig);
+        gerritConfig,
+        new BrokerApiWebSessionListener(item));
   }
 
   private Val createVal(Event message) {
