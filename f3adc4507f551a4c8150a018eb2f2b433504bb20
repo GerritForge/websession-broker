@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9653103e_4b904c6b",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-09-09T16:03:37Z",
+      "side": 1,
+      "message": "```suggestion\n// Copyright (C) 2026 GerritForge, Inc.\n```",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "f3adc4507f551a4c8150a018eb2f2b433504bb20",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
