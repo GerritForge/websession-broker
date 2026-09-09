@@ -210,6 +210,30 @@
       },
       "revId": "c382ef604b7d55a344fa07e1f811156ccbabfad6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f309fb08_f1479dea",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionModule.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-09-09T10:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4305deef_765e9427",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 1
+      },
+      "revId": "c382ef604b7d55a344fa07e1f811156ccbabfad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
