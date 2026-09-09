@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3aa97bd_73d12afc",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-09-09T06:44:18Z",
+      "side": 1,
+      "message": "What is this prefix for?",
+      "range": {
+        "startLine": 251,
+        "startChar": 27,
+        "endLine": 251,
+        "endChar": 52
+      },
+      "revId": "c382ef604b7d55a344fa07e1f811156ccbabfad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626b6544_b8ec9690",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-09-09T06:44:18Z",
+      "side": 1,
+      "message": "What is this prefix for? Flogger already adds information about the module logging.",
+      "range": {
+        "startLine": 255,
+        "startChar": 11,
+        "endLine": 255,
+        "endChar": 37
+      },
+      "revId": "c382ef604b7d55a344fa07e1f811156ccbabfad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a90c7d44_8eddac45",
         "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
         "patchSetId": 4
@@ -37,6 +83,30 @@
       "writtenOn": "2026-09-09T06:16:33Z",
       "side": 1,
       "message": "Why not simply move the responsibility of reacting to the start of the plugins to the `BrokerApiPluginListener` as we did on multi-site?",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 3
+      },
+      "revId": "c382ef604b7d55a344fa07e1f811156ccbabfad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5124573b_0b36c9db",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1012541
+      },
+      "writtenOn": "2026-09-09T06:44:18Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "a90c7d44_8eddac45",
       "range": {
         "startLine": 247,
         "startChar": 0,
