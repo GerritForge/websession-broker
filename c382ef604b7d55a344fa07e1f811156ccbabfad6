@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c74a2922_bf9bd658",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionCache.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-09-09T14:43:48Z",
+      "side": 1,
+      "message": "That\u0027s already in the listener, when the events-* plugin is loaded, then `onBrokerApiStarted` is called.\n\nThe `start` method here is only for when `websession-broker` plugin itself is started, and we need to check if the broker is already bounded or not.\n\nWe can move the `start` implementation because `BrokerBasedWebSessionCache` is the class that extends the Lifecycle listener. We can\u0027t move the cache initialisation to the listener either because that\u0027s only bounded in the httpModule, and we can\u0027t move the listener here because `onStartPlugin` only works when implemented in a class that bounds the `sysInjector`.\n\nI see the point though that the logic could be move out of there, let me look into that.",
+      "parentUuid": "5124573b_0b36c9db",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 3
+      },
+      "revId": "c382ef604b7d55a344fa07e1f811156ccbabfad6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4305deef_765e9427",
         "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/BrokerBasedWebSessionModule.java",
         "patchSetId": 4
