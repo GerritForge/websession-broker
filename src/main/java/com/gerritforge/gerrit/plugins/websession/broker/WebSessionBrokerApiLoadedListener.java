@@ -14,10 +14,12 @@ package com.gerritforge.gerrit.plugins.websession.broker;
 import com.gerritforge.gerrit.eventbroker.AckAwareConsumer;
 import com.gerritforge.gerrit.eventbroker.BrokerApi;
 import com.gerritforge.gerrit.eventbroker.BrokerApiPluginListener;
+import com.google.common.base.Preconditions;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.server.events.Event;
 import com.google.gerrit.server.plugins.StartPluginListener;
+import com.google.gerrit.server.plugins.StopPluginListener;
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -33,6 +35,7 @@ public class WebSessionBrokerApiLoadedListener implements BrokerApiPluginListene
   private String topic;
   private AckAwareConsumer<Event> consumer;
   private boolean replayAllEvents;
+  private volatile boolean started;
 
   @Inject
   WebSessionBrokerApiLoadedListener(DynamicItem<BrokerApi> brokerApi) {
@@ -58,12 +61,20 @@ public class WebSessionBrokerApiLoadedListener implements BrokerApiPluginListene
 
   @Override
   public synchronized void onBrokerApiStarted() {
+    Preconditions.checkState(!started, "Broker api has already been started");
     logger.atInfo().log(
         "Subscribing to topic %s on broker plugin %s", topic, brokerApi.getPluginName());
     brokerApi.get().receiveAsync(topic, consumer);
     if (replayAllEvents) {
       brokerApi.get().replayAllEvents(topic);
     }
+    started = true;
+  }
+
+  @Override
+  public void beforeBrokerApiStopped() {
+    Preconditions.checkState(started, "Broker api was not started");
+    started = false;
   }
 
   public static class Module extends AbstractModule {
@@ -71,6 +82,9 @@ public class WebSessionBrokerApiLoadedListener implements BrokerApiPluginListene
     protected void configure() {
       bind(WebSessionBrokerApiLoadedListener.class);
       bind(StartPluginListener.class)
+          .annotatedWith(UniqueAnnotations.create())
+          .to(WebSessionBrokerApiLoadedListener.class);
+      bind(StopPluginListener.class)
           .annotatedWith(UniqueAnnotations.create())
           .to(WebSessionBrokerApiLoadedListener.class);
     }
