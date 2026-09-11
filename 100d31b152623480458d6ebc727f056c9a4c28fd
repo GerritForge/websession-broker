@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6d93d2_d9b478d8",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-09-11T07:57:34Z",
+      "side": 1,
+      "message": "What happens if the `events-broker` plugin is unloaded and then loaded again?\n\nWouldn\u0027t this `started` flag remain `true` and prevent the `websession` broker from reconnecting?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "100d31b152623480458d6ebc727f056c9a4c28fd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
