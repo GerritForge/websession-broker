@@ -70,6 +70,24 @@
       "parentUuid": "f59aaa2a_deec5b3b",
       "revId": "0b9f56b964e486567dff91d20cbadb48332d929c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dd0fc86_308a468d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-09-11T12:57:32Z",
+      "side": 1,
+      "message": "\u003e We could do that, which would force the plugin to manage the stop.\n\nWhich plugin do you mean sorry? Only events-broker would need to manage the stop, all other plugins just read the value of the variable.",
+      "parentUuid": "0d19c167_4227146d",
+      "revId": "0b9f56b964e486567dff91d20cbadb48332d929c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
