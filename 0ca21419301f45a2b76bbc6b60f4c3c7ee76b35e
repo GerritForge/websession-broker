@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9347d121_fd263138",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-09-11T13:38:08Z",
+      "side": 1,
+      "message": "I would still change this to something like `brokerApiConnected`, `started` in this context doesn\u0027t mean much.",
+      "range": {
+        "startLine": 37,
+        "startChar": 27,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44e4b959_15a1348c",
         "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
         "patchSetId": 4
