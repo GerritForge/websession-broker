@@ -70,6 +70,30 @@
       },
       "revId": "100d31b152623480458d6ebc727f056c9a4c28fd",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403bef87_0e73913d",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-11T11:57:35Z",
+      "side": 1,
+      "message": "\u003e \u003e \u003e Wouldn\u0027t this `started` flag remain `true` and prevent the `websession` broker from reconnecting?\n\u003e \u003e \n\u003e \u003e Yes, and that\u0027s exactly what you wanted to avoid, if I am not mistaken.\n\u003e \n\u003e Not exactly, I wanted to prevent a _double_ connection to the broker, not the ability to _reconnect_.\n\u003e \n\u003e \n\u003e \u003e The broker api does not have an `unsubscribe`; therefore, reloading or restarting isn\u0027t supported at the moment.\n\u003e \n\u003e The broker-api _has_ a `disconnect` [method](https://gerrit.googlesource.com/modules/events-broker/+/refs/heads/master/src/main/java/com/gerritforge/gerrit/eventbroker/BrokerApi.java#55).\n\u003e \n\u003e That method is called by the events-kafka lifecycle, disconnecting any subscriber when the plugin is unloaded.\n\nAh, right, I totally forgot about it. Therefore, it is already taken care of, we don\u0027t have to do anything, do we?\nWe just reset the flag when a broker-api plugin is unloaded. Gerrit already has a notification for it. Let me take care of it in the next PS.\n\n\u003e And this is where I think we have a problem.\n\u003e \n\u003e 1. We unload events-kafka plugin (this disconnects `websession-broker` without resetting the `start` boolean):\n\u003e \n\u003e ```\n\u003e ssh -p 29418 admin@localhost gerrit plugin rm events-kafka\n\u003e ```\n\u003e \n\u003e 2. We re-enable the `events-kafka` plugin:\n\u003e \n\u003e ```\n\u003e ssh -p 29418 admin@localhost gerrit plugin enable events-kafka\n\u003e ```\n\u003e \n\u003e This now fails because `websession-broker` cannot _reconnect_:\n\u003e \n\u003e ```\n\u003e ssh -p 29418 admin@localhost gerrit plugin enable events-kafka\n\u003e com.google.gerrit.server.plugins.PluginInstallException: Broker api has already been started\n\u003e \tat com.google.gerrit.server.plugins.PluginLoader.runPlugin(PluginLoader.java:544)\n\u003e \tat com.google.gerrit.server.plugins.PluginLoader.enablePlugins(PluginLoader.java:306)\n\u003e \tat com.google.gerrit.sshd.commands.PluginEnableCommand.doRun(PluginEnableCommand.java:34)\n\u003e \tat com.google.gerrit.sshd.commands.PluginAdminSshCommand.run(PluginAdminSshCommand.java:35)\n\u003e \tat com.google.gerrit.sshd.SshCommand.lambda$start$0(SshCommand.java:88)\n\u003e \tat com.google.gerrit.sshd.BaseCommand$TaskThunk.run(BaseCommand.java:532)\n\u003e \tat com.google.gerrit.server.logging.LoggingContextAwareRunnable.run(LoggingContextAwareRunnable.java:126)\n\u003e \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)\n\u003e \tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)\n\u003e \tat java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:309)\n\u003e \tat com.google.gerrit.server.git.WorkQueue$Task.run(WorkQueue.java:985)\n\u003e \tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)\n\u003e \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)\n\u003e \tat java.base/java.lang.Thread.run(Thread.java:1474)\n\u003e Caused by: java.lang.IllegalStateException: Broker api has already been started\n\u003e \tat com.google.common.base.Preconditions.checkState(Preconditions.java:513)\n\u003e \tat com.gerritforge.gerrit.plugins.websession.broker.WebSessionBrokerApiLoadedListener.onBrokerApiStarted(WebSessionBrokerApiLoadedListener.java:63)\n\u003e \tat com.gerritforge.gerrit.eventbroker.BrokerApiPluginListener.onStartPlugin(BrokerApiPluginListener.java:48)\n\u003e \tat com.google.gerrit.server.plugins.PluginGuiceEnvironment.onStartPlugin(PluginGuiceEnvironment.java:293)\n\u003e \tat com.google.gerrit.server.plugins.PluginLoader.runPlugin(PluginLoader.java:533)\n\u003e \t... 13 more\n\u003e fatal: plugin failed to enable\n\u003e ```\n\u003e \n\u003e Should we not re-set the `start` variable when the broker disconnects?\n\nYep.",
+      "parentUuid": "b2732b5d_60022927",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "100d31b152623480458d6ebc727f056c9a4c28fd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
