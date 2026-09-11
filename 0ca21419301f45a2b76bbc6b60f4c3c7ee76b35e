@@ -45,6 +45,23 @@
       },
       "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f4bfaa_4010b4f0",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1015244
+      },
+      "writtenOn": "2026-09-11T13:50:44Z",
+      "side": 1,
+      "message": "We also need to bind the `StopPluginListener` now:\n\n```\nbind(StopPluginListener.class)\n    .annotatedWith(UniqueAnnotations.create())\n    .to(WebSessionBrokerApiLoadedListener.class);\n```",
+      "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
