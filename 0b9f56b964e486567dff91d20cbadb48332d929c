@@ -52,6 +52,24 @@
       "parentUuid": "f59aaa2a_deec5b3b",
       "revId": "0b9f56b964e486567dff91d20cbadb48332d929c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d19c167_4227146d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-09-11T12:56:39Z",
+      "side": 1,
+      "message": "And as I did in [1], I would call it `isBrokerApiConnected`, `started` is confusing IMO. We already have `onBrokerApiStarted`, so why are we checking if it\u0027s started within a method that contains `Started`.",
+      "parentUuid": "f59aaa2a_deec5b3b",
+      "revId": "0b9f56b964e486567dff91d20cbadb48332d929c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
