@@ -22,6 +22,30 @@
       },
       "revId": "100d31b152623480458d6ebc727f056c9a4c28fd",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f778d0d8_ee4d0b16",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-11T07:59:55Z",
+      "side": 1,
+      "message": "\u003e What happens if the `events-broker` plugin is unloaded and then loaded again?\n\n`events-broker` is a libModule and cannot be reloaded.\n\n\u003e Wouldn\u0027t this `started` flag remain `true` and prevent the `websession` broker from reconnecting?\n\nYes, and that\u0027s exactly what you wanted to avoid, if I am not mistaken.\nThe broker api does not have an `unsubscribe`; therefore, reloading or restarting isn\u0027t supported at the moment.",
+      "parentUuid": "ea6d93d2_d9b478d8",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 19
+      },
+      "revId": "100d31b152623480458d6ebc727f056c9a4c28fd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
