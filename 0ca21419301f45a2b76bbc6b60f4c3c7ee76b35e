@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e4b959_15a1348c",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1020677
+      },
+      "writtenOn": "2026-09-11T13:23:28Z",
+      "side": 1,
+      "message": "Do we need this? If the plugin is being stopped, why throw an exception if it had never subscribed?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 68
+      },
+      "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
