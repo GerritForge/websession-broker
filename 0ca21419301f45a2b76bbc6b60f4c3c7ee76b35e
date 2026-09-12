@@ -24,6 +24,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51e13a1_7dce13f8",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-12T01:15:27Z",
+      "side": 1,
+      "message": "I believe it makes sense, as it protects against a double start of the web session broker API.",
+      "parentUuid": "9347d121_fd263138",
+      "range": {
+        "startLine": 37,
+        "startChar": 27,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25a3a4bd_4449b047",
@@ -71,6 +95,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d54ada0c_53bf6f7a",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-12T01:15:27Z",
+      "side": 1,
+      "message": "Fixed in Gerrit, see https://gerrit-review.googlesource.com/c/gerrit/+/629941",
+      "parentUuid": "faf341c5_9b455079",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 36
+      },
+      "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44e4b959_15a1348c",
@@ -94,6 +142,30 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a46715_4c9e0733",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-12T01:15:27Z",
+      "side": 1,
+      "message": "Same as the start: we protect against the double-stop.\n\nAny impossible situation would throw an exception.",
+      "parentUuid": "44e4b959_15a1348c",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 68
+      },
+      "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8f4bfaa_4010b4f0",
@@ -107,6 +179,24 @@
       "writtenOn": "2026-09-11T13:50:44Z",
       "side": 1,
       "message": "We also need to bind the `StopPluginListener` now:\n\n```\nbind(StopPluginListener.class)\n    .annotatedWith(UniqueAnnotations.create())\n    .to(WebSessionBrokerApiLoadedListener.class);\n```",
+      "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b972200_e2b00ba9",
+        "filename": "src/main/java/com/gerritforge/gerrit/plugins/websession/broker/WebSessionBrokerApiLoadedListener.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2026-09-12T01:15:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8f4bfaa_4010b4f0",
       "revId": "0ca21419301f45a2b76bbc6b60f4c3c7ee76b35e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
