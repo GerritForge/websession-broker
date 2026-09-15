@@ -48,7 +48,7 @@ public class WebSessionBrokerApiLoadedListener implements BrokerApiPluginListene
     this.topic = topic;
     this.consumer = consumer;
     this.replayAllEvents = replayAll;
-    if (isBrokerApiStarted()) {
+    if (isBrokerApiBound()) {
       onBrokerApiStarted();
     } else {
       logger.atInfo().log(
@@ -65,6 +65,9 @@ public class WebSessionBrokerApiLoadedListener implements BrokerApiPluginListene
       brokerApi.get().replayAllEvents(topic);
     }
   }
+
+  @Override
+  public void beforeBrokerApiStopped() {}
 
   public static class Module extends AbstractModule {
     @Override
